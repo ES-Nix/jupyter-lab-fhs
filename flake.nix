@@ -12,11 +12,11 @@
         };
       in
       {
-        packages.jupyter-lab-fhs = import ./jupyter-lab-fhs.nix {
+        packages.julia-fhs = import ./julia-fhs.nix {
           pkgs = pkgsAllowUnfree;
         };
 
-        defaultPackage = self.packages.${system}.jupyter-lab-fhs;
+        defaultPackage = self.packages.${system}.julia-fhs;
       }
     );
 }

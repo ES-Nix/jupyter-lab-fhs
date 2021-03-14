@@ -1,19 +1,16 @@
 { pkgs ? import <nixpkgs> { } }:
 let
   fhs = pkgs.buildFHSUserEnv {
-    name = "jupyter-lab-fhs";
+    name = "julia-fhs";
     targetPkgs = pkgs: with pkgs;
       [
-        python3Packages.jupyterlab
+        julia
       ];
     runScript = "bash";
-    profile = with pkgs; ''
-      export PATH=${pkgs.python3Packages.jupyterlab}/bin:$PATH
-    '';
   };
 in
 pkgs.stdenv.mkDerivation {
-  name = "jupyter-lab-fhs-derivation";
+  name = "julia-fhs-derivation";
   nativeBuildInputs = [ fhs ];
   src = builtins.path { path = ./.; };
   installPhase = ''
@@ -21,6 +18,6 @@ pkgs.stdenv.mkDerivation {
     cp -r ${fhs}/bin "$out"
   '';
   shellHook = ''
-    exec -c jupyter-lab-fhs
+    exec -c julia-fhs
   '';
 }

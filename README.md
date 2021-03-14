@@ -7,8 +7,8 @@ TODO: check if the fork of the gist has some diff
 
 
 ```
-nix build .#jupyter-lab-fhs
-result/bin/jupyter-lab-fhs -c 'jupyter-lab --version'
+nix build .#julia-fhs
+result/bin/julia-fhs -c 'julia --version'
 ```
 
 In two steps:
